@@ -67,7 +67,7 @@ pipeline {
             stage('deploy PROD') {
                 steps{
                 snDevOpsStep ()
-                echo "deploy in prod"
+                echo "deploy in prod. mvn"
                  snDevOpsChange()              
                 }
             }
