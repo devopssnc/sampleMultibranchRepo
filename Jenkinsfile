@@ -1,5 +1,6 @@
 def artifactVersion = "1.${env.BUILD_NUMBER}"
-def artifactSemVersion = "$artifactVersion.0"
+def artifactSemVersion = "${artifactVersion}.0"
+
 pipeline {
    agent any
    tools {
