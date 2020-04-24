@@ -1,6 +1,3 @@
-def artifactVersion = "1.${env.BUILD_NUMBER}"
-def artifactSemVersion = "${artifactVersion}.0"
-
 pipeline {
    agent any
    tools {
@@ -23,9 +20,6 @@ pipeline {
                         //snDevOpsStep ()
                         echo "Testing"
                         sh 'mvn -Dtest=com.sndevops.eng.AppTest test'
-                       sh 'mvn package'
-		snDevOpsArtifact(artifactsPayload:"""{"artifacts": [{"name": "pipeline-demo-webapp.jar","version": "${artifactVersion}","semanticVersion": "${artifactSemVersion}","repositoryName": "pipeline-demo"}],"stageName": "build"}""")
-		snDevOpsPackage(name: "devops_pipeline_demo_${artifactVersion}", artifactsPayload: """{"artifacts": [{"name": "pipeline-demo-webapp.jar","version": "${artifactVersion}","semanticVersion": "${artifactSemVersion}","repositoryName": "pipeline-demo"}]}""")
                 }                       
             }
             stage('UAT unit test 2') {
